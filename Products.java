@@ -11,15 +11,8 @@ public class Products {
         this.quantity = quantity;
     }
 
-    public void showInfo() {
-        System.out.println("ID: " + id + ", Name: " + name + ", Price: $" + price + ", Quantity: " + quantity);
-    }
-
-    public void adjustStock(int amount) {
-        quantity = quantity + amount;
-    }
-
-    public String getName() {
-        return name;
+    public String getInfo() {
+        return id + " " + name + " $" + price + " Qty: " + quantity;
     }
 }
+

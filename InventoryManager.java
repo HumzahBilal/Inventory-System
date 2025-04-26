@@ -1,44 +1,35 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class InventoryManager {
     ArrayList<Products> productList = new ArrayList<>();
+    Queue<Products> restockQueue = new LinkedList<>();
+    MyLinkedList productLog = new MyLinkedList();
 
     public void addProduct(Products p) {
         productList.add(p);
-    }
-
-    public void removeProduct(int id) {
-        for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).id == id) {
-                productList.remove(i);
-                break;
-            }
+        productLog.add(p.name + " added");
+        if (p.quantity < 5) {
+            restockQueue.add(p);
         }
     }
 
-    public void searchProduct(String name) {
+    public void printProducts() {
         for (Products p : productList) {
-            if (p.getName().equalsIgnoreCase(name)) {
-                p.showInfo();
-            }
+            System.out.println(p.getInfo());
         }
     }
 
-    public void sortInventory() {
-        for (int i = 0; i < productList.size() - 1; i++) {
-            for (int j = 0; j < productList.size() - i - 1; j++) {
-                String name1 = productList.get(j).getName();
-                String name2 = productList.get(j + 1).getName();
-                if (name1.compareTo(name2) > 0) {
-                    Products temp = productList.get(j);
-                    productList.set(j, productList.get(j + 1));
-                    productList.set(j + 1, temp);
-                }
-            }
+    public void printRestockQueue() {
+        System.out.println("Products to Restock:");
+        for (Products p : restockQueue) {
+            System.out.println(p.getInfo());
         }
     }
 
-    public ArrayList<Products> getInventory() {
-        return productList;
+    public void printLog() {
+        System.out.println("Product Log:");
+        productLog.display();
     }
 }
