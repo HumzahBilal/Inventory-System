@@ -1,8 +1,8 @@
 public class Products {
-    int id;
-    String name;
-    double price;
-    int quantity;
+    private int id;
+    private String name;
+    private double price;
+    private int quantity;
 
     public Products(int id, String name, double price, int quantity) {
         this.id = id;
@@ -11,8 +11,23 @@ public class Products {
         this.quantity = quantity;
     }
 
-    public String getInfo() {
-        return id + " " + name + " $" + price + " Qty: " + quantity;
+    public void showInfo() {
+        System.out.println("ID: " + id + ", Name: " + name +
+                ", Price: $" + price + ", Qty: " + quantity);
+    }
+
+    public void adjustStock(int amount) {
+        this.quantity += amount;
+    }
+
+    // Needed for the tree and hash table
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 }
+
 
