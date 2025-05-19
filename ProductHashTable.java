@@ -12,7 +12,14 @@ public class ProductHashTable {
     }
 
     public Products getProduct(int id) {
-        return productMap.get(id);
+        if (productMap.containsKey(id)) {
+            return productMap.get(id);
+        }
+        return null;
+    }
+
+    public void removeProduct(int id) {
+        productMap.remove(id);
     }
 
     public void displayAll() {
@@ -22,3 +29,4 @@ public class ProductHashTable {
         }
     }
 }
+
